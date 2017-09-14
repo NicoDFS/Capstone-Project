@@ -1,0 +1,176 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.biro.footballsocer.Ui.Standing">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:elevation="4dp"
+
+        tools:targetApi="lollipop">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRef"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false">
+
+
+                <TableRow
+                    android:id="@+id/row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    >
+
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/row_margin_end"
+
+                        android:layout_marginLeft="@dimen/row_margin_start"
+                        android:layout_marginRight="@dimen/row_margin_end"
+                        android:layout_marginStart="@dimen/row_margin_start"
+                        android:layout_marginTop="@dimen/row_margin_top"
+                        android:layout_weight="0.1"
+
+                        android:text="@string/position" />
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/row_margin_end"
+                        android:layout_marginLeft="@dimen/row_margin_start"
+                        android:layout_marginRight="@dimen/row_margin_end"
+                        android:layout_marginStart="@dimen/row_margin_start"
+                        android:layout_marginTop="@dimen/row_margin_top"
+                        android:layout_weight="0.3"
+                        android:text="@string/team" />
+
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/row_margin_end"
+
+                        android:layout_marginLeft="@dimen/row_margin_start"
+                        android:layout_marginRight="@dimen/row_margin_end"
+                        android:layout_marginStart="@dimen/row_margin_start"
+                        android:layout_marginTop="@dimen/row_margin_top"
+                        android:layout_weight="0.1"
+                        android:text="@string/p"
+
+                        />
+
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/row_margin_end"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="@dimen/row_margin_end"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="@dimen/row_margin_top"
+
+                        android:layout_weight="0.1"
+                        android:text="@string/w" />
+
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="@dimen/row_margin_top"
+                        android:layout_weight="0.1"
+                        android:text="@string/l" />
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="@dimen/row_margin_top"
+
+                        android:layout_weight="0.1"
+                        android:text="@string/d" />
+
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="@dimen/row_margin_top"
+
+                        android:layout_weight="0.1"
+                        android:text="@string/gf" />
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="@dimen/row_margin_top"
+
+                        android:layout_weight="0.1"
+                        android:text="@string/ga" />
+
+                    <TextView
+
+                        android:id="@+id/textView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="@dimen/row_margin_top"
+
+                        android:layout_weight="0.1"
+                        android:text="@string/pts" />
+
+                </TableRow>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/standingTable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/row"
+                    android:layout_marginTop="12dp"
+                    android:contentDescription="@string/standingTable" />
+            </RelativeLayout>
+
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </android.support.v7.widget.CardView>
+
+
+</TableLayout>

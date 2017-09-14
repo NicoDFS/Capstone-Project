@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+
+        <TextView
+            android:id="@+id/position"
+            android:layout_width="0dp"
+            android:layout_marginEnd="@dimen/row_margin_end"
+            android:layout_marginLeft="@dimen/row_margin_start"
+            android:layout_marginRight="@dimen/row_margin_end"
+            android:layout_marginStart="@dimen/row_margin_start"
+            android:layout_marginTop="@dimen/row_margin_top"
+            android:layout_weight="0.1" />
+
+
+        <ImageView
+            android:id="@+id/clubImage"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="@dimen/row_margin_end"
+
+            android:layout_marginLeft="@dimen/row_margin_start"
+            android:layout_marginRight="@dimen/row_margin_end"
+            android:layout_marginStart="@dimen/row_margin_start"
+            android:layout_marginTop="@dimen/row_margin_top"
+            android:layout_weight="0.2"
+            android:contentDescription="@string/teamimage" />
+
+
+
+
+        <TextView
+            android:id="@+id/games"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/row_margin_end"
+            android:layout_marginLeft="@dimen/row_margin_start"
+            android:layout_marginRight="@dimen/row_margin_end"
+            android:layout_marginStart="@dimen/row_margin_start"
+            android:layout_marginTop="@dimen/row_margin_top"
+            android:layout_weight="0.1"
+
+
+            />
+
+
+        <TextView
+            android:id="@+id/wins"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/row_margin_end"
+            android:layout_marginLeft="@dimen/row_margin_start"
+            android:layout_marginRight="@dimen/row_margin_end"
+            android:layout_marginStart="@dimen/row_margin_start"
+            android:layout_marginTop="@dimen/row_margin_top"
+            android:layout_weight="0.1"
+
+
+            />
+
+
+
+        <TextView
+            android:id="@+id/loses"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/row_margin_end"
+            android:layout_marginLeft="@dimen/row_margin_start"
+            android:layout_marginRight="@dimen/row_margin_end"
+            android:layout_marginStart="@dimen/row_margin_start"
+            android:layout_marginTop="@dimen/row_margin_top"
+            android:layout_weight="0.1"
+
+            />
+
+
+        <TextView
+            android:id="@+id/draws"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/row_margin_end"
+            android:layout_marginLeft="@dimen/row_margin_start"
+            android:layout_marginRight="@dimen/row_margin_end"
+            android:layout_marginStart="@dimen/row_margin_start"
+            android:layout_marginTop="@dimen/row_margin_top"
+            android:layout_weight="0.1"
+
+            />
+
+
+        <TextView
+            android:id="@+id/goals"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/row_margin_end"
+
+            android:layout_marginLeft="@dimen/row_margin_start"
+            android:layout_marginRight="@dimen/row_margin_end"
+            android:layout_marginStart="@dimen/row_margin_start"
+            android:layout_marginTop="@dimen/row_margin_top"
+            android:layout_weight="0.1" />
+
+
+
+        <TextView
+            android:id="@+id/gA"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/row_margin_end"
+            android:layout_marginLeft="@dimen/row_margin_start"
+            android:layout_marginRight="@dimen/row_margin_end"
+            android:layout_marginStart="@dimen/row_margin_start"
+            android:layout_marginTop="@dimen/row_margin_top"
+            android:layout_weight="0.1"
+
+            />
+
+
+        <TextView
+            android:id="@+id/points"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/row_margin_end"
+            android:layout_marginLeft="@dimen/row_margin_start"
+            android:layout_marginRight="@dimen/row_margin_end"
+            android:layout_marginStart="@dimen/row_margin_start"
+            android:layout_marginTop="@dimen/row_margin_top"
+            android:layout_weight="0.1"
+
+            />
+
+
+    </TableRow>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/md_grey_700" />
+
+
+</RelativeLayout>

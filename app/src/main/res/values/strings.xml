@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">FootballSoccer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drawer_item_1">Premier League</string>
+    <string name="drawer_item_2">Bundesliga</string>
+    <string name="drawer_item_3">Seria A</string>
+    <string name="drawer_item_4">Ligue 1</string>
+
+    <string name="teams_list">ClubList</string>
+    <string name="standingTable">ClubList</string>
+    <string name="teamimage">teamImage</string>
+     <!--Add your api key for https://fantasydata.com/-->
+    <string name="api_key">PUT YOUR API KEY HERE</string>
+    <string name="subscriptionKey">Ocp-Apim-Subscription-Key</string>
+    <string name="bundesliga">145</string>
+    <string name="ligue1">147</string>
+    <string name="premierLeague">144</string>
+    <string name="serieA">159</string>
+    <string name="UEFAChampions">148</string>
+    <string name="UEFAEuropaLeague">160</string>
+    <string name="pts">Pts</string>
+    <string name="ga">GA</string>
+    <string name="gf">GF</string>
+    <string name="d">D</string>
+    <string name="l">L</string>
+    <string name="w">W</string>
+    <string name="p">P</string>
+    <string name="team">Team</string>
+    <string name="position">#</string>
+    <string name="Vs">VS</string>
+    <string name="applogo">AppLogo</string>
+    <string name="playingnow">Playing Now</string>
+    <string name="teamkey">teamKey</string>
+
+    <string name="name">Name :</string>
+    <string name="country">Country :</string>
+    <string name="stadium">Stadium :</string>
+    <string name="league">League :</string>
+    <string name="points">Points :</string>
+    <string name="goals">Goals :</string>
+    <string name="goalsagainst">GoalsAgainst :</string>
+    <string name="matches">Matches :</string>
+    <string name="pos">Position :</string>
+    <string name="wins">Wins</string>
+    <string name="loses">Loses</string>
+    <string name="draws">Draws</string>
+    <string name="imagetransition">ClubImage</string>
+    <string name="ad_mob_banner">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="ad_mob_interstitialAd">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob">admob</string>
+    <string name="splash_lable">FootballSoccer</string>
+    <string name="main_screen">MainScreen</string>
+    <string name="team_detail_screen">TeamDetailScreen</string>
+</resources>
