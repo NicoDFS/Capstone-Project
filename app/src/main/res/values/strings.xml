@@ -53,4 +53,9 @@
     <string name="splash_lable">FootballSoccer</string>
     <string name="main_screen">MainScreen</string>
     <string name="team_detail_screen">TeamDetailScreen</string>
+    <string name="GameDayFragment">GameDay</string>
+    <string name="StandingFragment">Standing</string>
+    <string name="TeamFragment">Team</string>
+    <string name="connectionError">Can not sync check your internet connection</string>
+    <string name="apiError">Access denied due to missing subscription key. Make sure to include subscription key when making requests to an API.</string>
 </resources>
