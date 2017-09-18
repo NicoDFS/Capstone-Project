@@ -100,7 +100,7 @@ public class GameViewFactory implements RemoteViewsService.RemoteViewsFactory {
             row.setTextViewText(R.id.time, time.substring(0, time.length() - 3));
 
 
-            row.setTextViewText(R.id.status, ":");
+            row.setTextViewText(R.id.status, context.getString(R.string.colon));
             row.setTextViewText(R.id.homeTeamScore, homeTeamScore);
             row.setTextViewText(R.id.awayTeamScore, awayTeamScore);
             row.setTextViewText(R.id.inProgress, context.getString(R.string.inProgress));
