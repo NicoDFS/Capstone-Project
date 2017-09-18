@@ -1,4 +1,4 @@
-package com.example.biro.footballsocer.Utils;
+package com.example.biro.footballsocer.utils;
 
 import android.app.Application;
 import android.text.TextUtils;

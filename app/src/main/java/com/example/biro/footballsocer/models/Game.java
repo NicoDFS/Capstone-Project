@@ -1,4 +1,4 @@
-package com.example.biro.footballsocer.Models;
+package com.example.biro.footballsocer.models;
 
 /**
  * Created by Biro on 9/7/2017.

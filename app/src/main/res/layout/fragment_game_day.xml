@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/swipeRef"
-    tools:context="com.example.biro.footballsocer.Ui.GameDay">
+    tools:context="com.example.biro.footballsocer.ui.GameDay">
 
 
     <ExpandableListView

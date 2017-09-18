@@ -1,9 +1,7 @@
-package com.example.biro.footballsocer.Data;
+package com.example.biro.footballsocer.data;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
-
-import java.util.ArrayList;
 
 /**
  * Created by Biro on 8/29/2017.

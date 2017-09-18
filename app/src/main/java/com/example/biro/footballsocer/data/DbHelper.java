@@ -1,4 +1,4 @@
-package com.example.biro.footballsocer.Data;
+package com.example.biro.footballsocer.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

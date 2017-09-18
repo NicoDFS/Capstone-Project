@@ -1,4 +1,4 @@
-package com.example.biro.footballsocer.Sync;
+package com.example.biro.footballsocer.sync;
 
 import android.app.Activity;
 import android.util.Log;
@@ -9,7 +9,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.biro.footballsocer.Utils.ApplicationController;
+import com.example.biro.footballsocer.R;
+import com.example.biro.footballsocer.utils.ApplicationController;
 
 
 import org.json.JSONArray;
@@ -74,7 +75,7 @@ public class Requests {
 
                 if(error.networkResponse.statusCode==401)
                 {
-                    Toast.makeText(context,"Access denied due to missing subscription key. Make sure to include subscription key when making requests to an API.",Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, R.string.apiError,Toast.LENGTH_LONG).show();
                 }
 
 

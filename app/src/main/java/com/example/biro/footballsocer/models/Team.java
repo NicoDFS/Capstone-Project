@@ -1,4 +1,4 @@
-package com.example.biro.footballsocer.Models;
+package com.example.biro.footballsocer.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

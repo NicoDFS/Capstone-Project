@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
 
-    tools:context="com.example.biro.footballsocer.Ui.Standing">
+    tools:context="com.example.biro.footballsocer.ui.Standing">
 
     <android.support.v7.widget.CardView
         android:layout_width="wrap_content"

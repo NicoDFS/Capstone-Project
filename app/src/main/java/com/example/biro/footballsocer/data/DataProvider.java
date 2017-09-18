@@ -1,4 +1,4 @@
-package com.example.biro.footballsocer.Data;
+package com.example.biro.footballsocer.data;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -9,9 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
-import com.example.biro.footballsocer.Ui.GameWidget;
-import com.example.biro.footballsocer.Utils.SharedPref;
 
 /**
  * Created by Biro on 8/29/2017.
