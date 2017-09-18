@@ -122,7 +122,7 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
 
         if (gameObj.getDate().equals("null")) {
 
-            holder.date.setText("Not Scheduled Yet");
+            holder.date.setText(R.string.notscheduled);
         } else
             holder.date.setText(gameObj.getDate());
 
@@ -149,21 +149,21 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
         Picasso.with(context).load(gameObj.getHomeTeamPic()).resize(width, height).placeholder(placeHolder).into(holder.homeTeamPic);
         Picasso.with(context).load(gameObj.getAwayTeamPic()).resize(width, height).placeholder(placeHolder).into(holder.awayTeamPic);
 
-        if (gameObj.getStatus().equals("Scheduled")) {
+        if (gameObj.getStatus().equals(context.getString(R.string.scheduled))) {
 
-            holder.status.setText("VS");
+            holder.status.setText(context.getString(R.string.Vs));
             holder.awayTeamScore.setText("");
             holder.homeTeamScore.setText("");
-        } else if (gameObj.getStatus().equals("Final")) {
+        } else if (gameObj.getStatus().equals(context.getString(R.string.FInal))) {
 
             holder.awayTeamScore.setText(gameObj.getAwayTeamGoals());
             holder.homeTeamScore.setText(gameObj.getHomeTeamGoals());
-            holder.status.setText(":");
-        } else if (gameObj.getStatus().equals("InProgress")) {
+            holder.status.setText(R.string.colon);
+        } else if (gameObj.getStatus().equals(context.getString(R.string.inProgress))) {
             holder.awayTeamScore.setText(gameObj.getAwayTeamGoals());
             holder.homeTeamScore.setText(gameObj.getHomeTeamGoals());
-            holder.inProgress.setText("In Progress");
-            holder.status.setText(":");
+            holder.inProgress.setText(context.getString(R.string.inProgress));
+            holder.status.setText(context.getString(R.string.colon));
 
         }
 
