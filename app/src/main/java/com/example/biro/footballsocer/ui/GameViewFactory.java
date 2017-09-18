@@ -103,8 +103,8 @@ public class GameViewFactory implements RemoteViewsService.RemoteViewsFactory {
             row.setTextViewText(R.id.status, ":");
             row.setTextViewText(R.id.homeTeamScore, homeTeamScore);
             row.setTextViewText(R.id.awayTeamScore, awayTeamScore);
-            row.setTextViewText(R.id.inProgress, "InProgress");
-            row.setTextViewText(R.id.nowPlaying,"No matches Playing Now");
+            row.setTextViewText(R.id.inProgress, context.getString(R.string.inProgress));
+            row.setTextViewText(R.id.nowPlaying, context.getString(R.string.noMplayingnow));
 
 
             try {
