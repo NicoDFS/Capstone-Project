@@ -171,9 +171,9 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
 
     private void setupViewPager(ViewPager viewPager) {
          adapter = new PagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new GameDay(), "GameDay");
-        adapter.addFragment(new Standing(), "Standing");
-        adapter.addFragment(new Teams(), "Team");
+        adapter.addFragment(new GameDay(), getString(R.string.GameDayFragment));
+        adapter.addFragment(new Standing(), getString(R.string.StandingFragment));
+        adapter.addFragment(new Teams(), getString(R.string.TeamFragment));
 
 
         viewPager.setAdapter(adapter);

@@ -106,7 +106,7 @@ public class Teams extends Fragment implements SwipeRefreshLayout.OnRefreshListe
             fetchDataListener.fetchTeamsData();
 
         } else {
-            Toast.makeText(getContext(), "Can not sync check your internet connection", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), R.string.connectionError, Toast.LENGTH_LONG).show();
             swipeRefreshLayout.setRefreshing(false);
         }
         getLoaderManager().restartLoader(0, null, this);
