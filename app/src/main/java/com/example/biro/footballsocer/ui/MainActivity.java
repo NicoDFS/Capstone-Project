@@ -12,11 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
+import com.example.biro.footballsocer.R;
 import com.example.biro.footballsocer.adapters.PagerAdapter;
 import com.example.biro.footballsocer.data.Contract;
-import com.example.biro.footballsocer.R;
 import com.example.biro.footballsocer.sync.Requests;
 import com.example.biro.footballsocer.utils.SharedPref;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -73,8 +72,7 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
         setupViewPager(viewPager);
         tabs.setupWithViewPager(viewPager);
 
-        Toast.makeText(this, Build.VERSION.SDK_INT+""
-        ,Toast.LENGTH_LONG).show();
+
         SecondaryDrawerItem item1 = new SecondaryDrawerItem().withIdentifier(0).withName(R.string.drawer_item_1).withIcon(R.drawable.premierleague);
         SecondaryDrawerItem item2 = new SecondaryDrawerItem().withIdentifier(1).withName(R.string.drawer_item_2).withIcon(R.drawable.bundsliga);
         SecondaryDrawerItem item3 = new SecondaryDrawerItem().withIdentifier(2).withName(R.string.drawer_item_3).withIcon(R.drawable.serieaa);

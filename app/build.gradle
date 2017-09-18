@@ -6,7 +6,7 @@ android {
         config {
             keyAlias 'capstone'
             keyPassword 'footballsoccer'
-            storeFile file('keystore.jks')
+            storeFile file("keystore.jks")
             storePassword 'footballsoccer'
         }
     }
@@ -28,7 +28,6 @@ android {
         }
     }
 }
-
 
 
 dependencies {
