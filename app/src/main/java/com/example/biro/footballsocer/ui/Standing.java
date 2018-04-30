@@ -12,6 +12,7 @@ import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +40,7 @@ public class Standing extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     SwipeRefreshLayout swipeRefreshLayout;
     StandingAdapter adapter;
     FetchDataListener fetchDataListener;
-
-
+    private Context context;
 
 
     @Override
@@ -50,10 +50,21 @@ public class Standing extends Fragment implements SwipeRefreshLayout.OnRefreshLi
 
         View view = inflater.inflate(R.layout.fragment_standing, container, false);
         ButterKnife.bind(this, view);
+
+
+        adapter = new StandingAdapter();
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
+
         swipeRefreshLayout.setOnRefreshListener(this);
-        swipeRefreshLayout.setRefreshing(true);
-
-
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+            }
+        });
         return view;
     }
 
@@ -63,13 +74,13 @@ public class Standing extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         super.onStart();
 
         Handler handler = new Handler();
-
         handler.postDelayed(new Runnable() {
             public void run() {
-                getLoaderManager().restartLoader(0, null, Standing.this);
-
+                onRefresh();
             }
-        }, 6000);
+        }, 2000);
+
+
     }
 
 
@@ -81,6 +92,7 @@ public class Standing extends Fragment implements SwipeRefreshLayout.OnRefreshLi
         } catch (ClassCastException castException) {
             /** The activity does not implement the listener. */
         }
+        this.context = context;
 
 
     }
@@ -88,34 +100,32 @@ public class Standing extends Fragment implements SwipeRefreshLayout.OnRefreshLi
     @Override
     public void onRefresh() {
 
-        if (Utils.getInstance(getContext()).networkUp()) {
+        if (Utils.getInstance(context).networkUp()) {
             fetchDataListener.fetchTeamsData();
 
         } else {
-            Toast.makeText(getContext(), R.string.connectionError, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, R.string.connectionError, Toast.LENGTH_LONG).show();
             swipeRefreshLayout.setRefreshing(false);
         }
-
         getLoaderManager().restartLoader(0, null, this);
+
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
-        return new CursorLoader(getActivity(),
+        return new CursorLoader(context,
                 Contract.Teams.URI,
                 Contract.Teams.TEAM_COLUMNS,
-                Contract.Teams.COLUMN_ROUND_ID, new String[]{SharedPref.getInstance(getContext()).load(Contract.TAG)}, Contract.Teams.COLUMN_POSITION);
+                Contract.Teams.COLUMN_ROUND_ID, new String[]{SharedPref.getInstance(context).load(Contract.TAG)}, Contract.Teams.COLUMN_POSITION);
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
 
-        adapter = new StandingAdapter(data, getContext());
-        recyclerView.setAdapter(adapter);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setLayoutManager(layoutManager);
+        adapter.setCursor(data);
+
+        adapter.notifyDataSetChanged();
         swipeRefreshLayout.setRefreshing(false);
     }
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_28">28dp</dimen>
+    <dimen name="margin_12">12dp</dimen>
+    <dimen name="club_img_widh">128dp</dimen>
+    <dimen name="club_img_height">92dp</dimen>
+</resources>

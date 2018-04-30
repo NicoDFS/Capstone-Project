@@ -24,12 +24,15 @@ import butterknife.ButterKnife;
 public class StandingAdapter extends RecyclerView.Adapter<StandingAdapter.ViewHolder> {
 
 
-    Cursor cursor;
-    Context context;
+    private Cursor cursor;
 
-    public StandingAdapter(Cursor cursor, Context context) {
+    public StandingAdapter() {
+
+
+    }
+
+    public void setCursor(Cursor cursor) {
         this.cursor = cursor;
-        this.context = context;
     }
 
     @Override
@@ -57,7 +60,7 @@ public class StandingAdapter extends RecyclerView.Adapter<StandingAdapter.ViewHo
             height = 100;
         }
 
-        Picasso.with(context)
+        Picasso.get()
                 .load(cursor.getString(cursor.getColumnIndex(Contract.Teams.COLUMN_PIC_URL)))
                 .resize(width, height)
                 .placeholder(placeHolder)

@@ -24,12 +24,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/margin_16"
                 android:contentDescription="@string/teamimage"
 
                 android:scaleType="centerCrop"
-                android:transitionName="@string/imagetransition"
-                tools:targetApi="lollipop" />
+
+              />
 
 
             <LinearLayout
@@ -37,35 +37,35 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/clubImage"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_8"
                 android:orientation="horizontal">
 
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="@dimen/margin_8"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:layout_marginTop="@dimen/margin_8"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="@dimen/margin_8"
+                        android:layout_marginStart="@dimen/margin_8"
 
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="@string/name"
                         android:textSize="20sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="@dimen/margin_8"
+                        android:layout_marginStart="@dimen/margin_8"
+                        android:layout_marginTop="@dimen/margin_8"
 
                         android:text="@string/country"
                         android:textSize="20sp" />
@@ -73,9 +73,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="@dimen/margin_8"
+                        android:layout_marginStart="@dimen/margin_8"
+                        android:layout_marginTop="@dimen/margin_8"
 
                         android:text="@string/stadium"
                         android:textSize="20sp" />
@@ -83,19 +83,19 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="@dimen/margin_8"
+                        android:layout_marginStart="@dimen/margin_8"
 
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="@string/league"
                         android:textSize="20sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="@dimen/margin_8"
+                        android:layout_marginStart="@dimen/margin_8"
+                        android:layout_marginTop="@dimen/margin_8"
 
                         android:text="@string/matches"
                         android:textSize="20sp" />
@@ -103,9 +103,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="@dimen/margin_8"
+                        android:layout_marginStart="@dimen/margin_8"
+                        android:layout_marginTop="@dimen/margin_8"
 
                         android:text="@string/wins"
                         android:textSize="20sp" />
@@ -113,9 +113,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="@dimen/margin_8"
+                        android:layout_marginStart="@dimen/margin_8"
+                        android:layout_marginTop="@dimen/margin_8"
 
                         android:text="@string/loses"
                         android:textSize="20sp" />
@@ -123,9 +123,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="@dimen/margin_8"
+                        android:layout_marginStart="@dimen/margin_8"
+                        android:layout_marginTop="@dimen/margin_8"
 
                         android:text="@string/draws"
                         android:textSize="20sp" />
@@ -134,9 +134,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="@dimen/margin_8"
+                        android:layout_marginStart="@dimen/margin_8"
+                        android:layout_marginTop="@dimen/margin_8"
 
                         android:text="@string/pos"
                         android:textSize="20sp" />
@@ -144,10 +144,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="@dimen/margin_8"
+                        android:layout_marginStart="@dimen/margin_8"
 
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="@string/points"
                         android:textSize="20sp" />
 
@@ -155,9 +155,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="@dimen/margin_8"
+                        android:layout_marginStart="@dimen/margin_8"
+                        android:layout_marginTop="@dimen/margin_8"
 
 
                         android:text="@string/goals"
@@ -167,10 +167,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="@dimen/margin_8"
+                        android:layout_marginStart="@dimen/margin_8"
 
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="@string/goalsagainst"
                         android:textSize="20sp" />
 
@@ -180,9 +180,9 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="@dimen/margin_8"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:layout_marginTop="@dimen/margin_8"
                     android:orientation="vertical">
 
 
@@ -190,9 +190,9 @@
                         android:id="@+id/clubName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="@dimen/margin_16"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="Barcalona"
                         android:textColor="@color/md_white_1000"
 
@@ -202,11 +202,11 @@
                         android:id="@+id/clubCountry"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="4dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="@dimen/margin_4"
+                        android:layout_marginLeft="@dimen/margin_16"
+                        android:layout_marginRight="@dimen/margin_4"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="England"
                         android:textColor="@color/md_white_1000"
 
@@ -216,9 +216,9 @@
                         android:id="@+id/clubStadium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="@dimen/margin_16"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="old trafod"
                         android:textColor="@color/md_white_1000"
 
@@ -229,11 +229,11 @@
                         android:id="@+id/clubLeague"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="4dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="@dimen/margin_4"
+                        android:layout_marginLeft="@dimen/margin_16"
+                        android:layout_marginRight="@dimen/margin_4"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="premier league"
                         android:textColor="@color/md_white_1000"
 
@@ -244,11 +244,11 @@
                         android:id="@+id/clubMatches"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="4dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="@dimen/margin_4"
+                        android:layout_marginLeft="@dimen/margin_16"
+                        android:layout_marginRight="@dimen/margin_4"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="10"
                         android:textColor="@color/md_white_1000"
 
@@ -258,11 +258,11 @@
                         android:id="@+id/clubWins"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="4dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="@dimen/margin_4"
+                        android:layout_marginLeft="@dimen/margin_16"
+                        android:layout_marginRight="@dimen/margin_4"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="10"
                         android:textColor="@color/md_white_1000"
 
@@ -272,11 +272,11 @@
                         android:id="@+id/clubLoses"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="4dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="@dimen/margin_4"
+                        android:layout_marginLeft="@dimen/margin_16"
+                        android:layout_marginRight="@dimen/margin_4"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="10"
                         android:textColor="@color/md_white_1000"
 
@@ -286,11 +286,11 @@
                         android:id="@+id/clubDraws"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="4dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="@dimen/margin_4"
+                        android:layout_marginLeft="@dimen/margin_16"
+                        android:layout_marginRight="@dimen/margin_4"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="10"
                         android:textColor="@color/md_white_1000"
 
@@ -301,11 +301,11 @@
                         android:id="@+id/clubPosition"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="4dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="@dimen/margin_4"
+                        android:layout_marginLeft="@dimen/margin_16"
+                        android:layout_marginRight="@dimen/margin_4"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="1"
                         android:textColor="@color/md_white_1000"
 
@@ -315,11 +315,11 @@
                         android:id="@+id/clubPoints"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="4dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="@dimen/margin_4"
+                        android:layout_marginLeft="@dimen/margin_16"
+                        android:layout_marginRight="@dimen/margin_4"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="10"
                         android:textColor="@color/md_white_1000"
 
@@ -329,11 +329,11 @@
                         android:id="@+id/clubGoals"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="4dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="@dimen/margin_4"
+                        android:layout_marginLeft="@dimen/margin_16"
+                        android:layout_marginRight="@dimen/margin_4"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="10"
                         android:textColor="@color/md_white_1000"
 
@@ -343,11 +343,11 @@
                         android:id="@+id/clubGoalsAg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="4dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="@dimen/margin_4"
+                        android:layout_marginLeft="@dimen/margin_16"
+                        android:layout_marginRight="@dimen/margin_4"
+                        android:layout_marginStart="@dimen/margin_16"
+                        android:layout_marginTop="@dimen/margin_8"
                         android:text="10"
                         android:textColor="@color/md_white_1000"
 

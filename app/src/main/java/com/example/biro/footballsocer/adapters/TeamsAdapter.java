@@ -24,6 +24,7 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Biro on 9/1/2017.
@@ -31,62 +32,24 @@ import butterknife.ButterKnife;
 
 public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.ViewHolder> {
 
-    Cursor cursor;
-    Activity context;
+    private Cursor cursor;
+    private Activity context;
     private FirebaseAnalytics mFirebaseAnalytics;
 
-    public TeamsAdapter(Activity context, Cursor cursor) {
+    public TeamsAdapter(Activity context) {
         this.context = context;
-        this.cursor = cursor;
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
     }
 
+    public void setCursor(Cursor cursor) {
+        this.cursor = cursor;
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.team_row, parent, false);
-        final ViewHolder vh = new ViewHolder(v);
-        v.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View v) {
 
-
-
-                cursor.moveToPosition(vh.getAdapterPosition());
-                String teamImage = cursor.getString(cursor.getColumnIndex(Contract.Teams.COLUMN_PIC_URL));
-                String teamName = cursor.getString(cursor.getColumnIndex(Contract.Teams.COLUMN_NAME));
-                String teamCountry = cursor.getString(cursor.getColumnIndex(Contract.Teams.COLUMN_COUNTRY));
-                String teamStadium = cursor.getString(cursor.getColumnIndex(Contract.Teams.COLUMN_STADIUM));
-                int teamMatches = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_PLAYED_GAMES));
-                int teamLeague = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_ROUND_ID));
-                int teamPosition = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_POSITION));
-                int teamPoints = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_POINTS));
-                int teamsGoals = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_GOALS));
-                int teamGoalsAg = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_GOALS_AGAINST));
-                int teamWins = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_WINS));
-                int teamLoses = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_LOSES));
-                int teamDraws = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_DRAWS));
-
-
-
-                Team team = new Team(teamImage, teamCountry, teamName, teamStadium,
-                        teamPosition, teamPoints, teamWins, teamLoses, teamDraws, teamsGoals, teamGoalsAg, teamLeague,teamMatches);
-
-                Bundle b = new Bundle();
-                b.putString(FirebaseAnalytics.Param.ITEM_ID, String.valueOf(vh.getAdapterPosition()));
-                b.putString(FirebaseAnalytics.Param.ITEM_NAME, teamName);
-                b.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
-                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, b);
-
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra(context.getString(R.string.teamkey), team);
-                Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(context, vh.teamImage,vh.teamImage.getTransitionName()).toBundle();
-
-                context.startActivity(intent,bundle);
-            }
-        });
-        return vh;
+        return new ViewHolder(v);
 
     }
 
@@ -110,13 +73,14 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.ViewHolder> 
             height = 200;
             placeHolder = R.drawable.progress_animation;
         }
-        Picasso.with(context).load(cursor.getString(cursor.getColumnIndex(Contract.Teams.COLUMN_PIC_URL)))
+        Picasso.get().load(cursor.getString(cursor.getColumnIndex(Contract.Teams.COLUMN_PIC_URL)))
                 .resize(width, height)
                 .placeholder(placeHolder)
                 .into(holder.teamImage);
 
+        String name = cursor.getString(cursor.getColumnIndex(Contract.Teams.COLUMN_NAME));
 
-        holder.teamName.setText(cursor.getString(cursor.getColumnIndex(Contract.Teams.COLUMN_NAME)));
+        holder.teamName.setText(name);
     }
 
     @Override
@@ -143,6 +107,44 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.ViewHolder> 
             super(v);
             ButterKnife.bind(this, v);
 
+        }
+
+        @OnClick(R.id.teamCard)
+        void startDetailActivity() {
+
+            Team selectedTeam = getSelectedTeam();
+
+            Bundle b = new Bundle();
+            b.putString(FirebaseAnalytics.Param.ITEM_ID, String.valueOf(getAdapterPosition()));
+            b.putString(FirebaseAnalytics.Param.ITEM_NAME, selectedTeam.getName());
+            b.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, b);
+
+            Intent intent = new Intent(context, DetailActivity.class);
+            intent.putExtra(context.getString(R.string.teamkey), selectedTeam);
+
+            context.startActivity(intent);
+        }
+
+        private Team getSelectedTeam() {
+            cursor.moveToPosition(getAdapterPosition());
+            String teamImage = cursor.getString(cursor.getColumnIndex(Contract.Teams.COLUMN_PIC_URL));
+            String teamName = cursor.getString(cursor.getColumnIndex(Contract.Teams.COLUMN_NAME));
+            String teamCountry = cursor.getString(cursor.getColumnIndex(Contract.Teams.COLUMN_COUNTRY));
+            String teamStadium = cursor.getString(cursor.getColumnIndex(Contract.Teams.COLUMN_STADIUM));
+            int teamMatches = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_PLAYED_GAMES));
+            int teamLeague = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_ROUND_ID));
+            int teamPosition = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_POSITION));
+            int teamPoints = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_POINTS));
+            int teamsGoals = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_GOALS));
+            int teamGoalsAg = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_GOALS_AGAINST));
+            int teamWins = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_WINS));
+            int teamLoses = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_LOSES));
+            int teamDraws = cursor.getInt(cursor.getColumnIndex(Contract.Teams.COLUMN_DRAWS));
+
+
+            return new Team(teamImage, teamCountry, teamName, teamStadium,
+                    teamPosition, teamPoints, teamWins, teamLoses, teamDraws, teamsGoals, teamGoalsAg, teamLeague, teamMatches);
         }
     }
 }

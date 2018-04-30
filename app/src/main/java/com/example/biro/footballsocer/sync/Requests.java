@@ -73,10 +73,7 @@ public class Requests {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                if(error.networkResponse.statusCode==401)
-                {
-                    Toast.makeText(context, R.string.apiError,Toast.LENGTH_LONG).show();
-                }
+
 
 
             }

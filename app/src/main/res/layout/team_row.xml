@@ -21,13 +21,13 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="128dp"
-            android:layout_height="92dp"
+            android:layout_width="@dimen/club_img_widh"
+            android:layout_height="@dimen/club_img_height"
             android:layout_gravity="center"
             android:scaleType="centerInside"
             android:id="@+id/teamImage"
             android:transitionName="@string/imagetransition"
-            android:paddingTop="16dp"
+            android:paddingTop="@dimen/margin_16"
             android:contentDescription="@string/teamimage"
             android:src="@drawable/barcelona" />
 
@@ -41,10 +41,10 @@
 
             android:gravity="center"
             android:maxLines="4"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="16dp"
+            android:paddingBottom="@dimen/margin_16"
+            android:paddingLeft="@dimen/margin_16"
+            android:paddingRight="@dimen/margin_16"
+            android:paddingTop="@dimen/margin_16"
             android:textColor="@color/md_white_1000"
             android:textSize="12sp" />
     </LinearLayout>

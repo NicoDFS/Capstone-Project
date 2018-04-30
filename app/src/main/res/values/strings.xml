@@ -12,7 +12,7 @@
     <string name="standingTable">ClubList</string>
     <string name="teamimage">teamImage</string>
      <!--Add your api key for https://fantasydata.com/-->
-    <string name="api_key">PUT YOUR API KEY HERE</string>
+    <string name="api_key">0bc0cdebdfdb4c3f977c513cafd1d9a4</string>
     <string name="subscriptionKey">Ocp-Apim-Subscription-Key</string>
     <string name="bundesliga">145</string>
     <string name="ligue1">147</string>

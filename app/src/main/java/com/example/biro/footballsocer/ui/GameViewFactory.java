@@ -79,7 +79,7 @@ public class GameViewFactory implements RemoteViewsService.RemoteViewsFactory {
                 R.layout.widget_row);
         if (cursor != null) {
             cursor.moveToPosition(position);
-            final Picasso picasso = Picasso.with(context);
+            final Picasso picasso = Picasso.get();
             String homeTeamScore = cursor.getString(cursor.getColumnIndex(Contract.Match.COLUMN_HOME_TEAM_GOALS));
             String awayTeamScore = cursor.getString(cursor.getColumnIndex(Contract.Match.COLUMN_AWAY_TEAM_GOALS));
             String dT = cursor.getString(cursor.getColumnIndex(Contract.Match.COLUMN_DATE));

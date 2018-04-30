@@ -98,6 +98,11 @@ public class DataProvider extends ContentProvider {
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI:" + uri);
+
+
+        }
+        if (returnCursor != null) {
+            returnCursor.setNotificationUri(getContext().getContentResolver(), uri);
         }
         return returnCursor;
     }
@@ -134,7 +139,12 @@ public class DataProvider extends ContentProvider {
         SQLiteDatabase db = DbInstance.getWritableDatabase();
         switch (sUriMatcher.match(uri)) {
             case TEAM:
+                getContext().getContentResolver().notifyChange(uri, null);
                 return db.delete(Contract.Teams.TABLE_NAME, selection, selectionArgs);
+            case MATCH:
+                getContext().getContentResolver().notifyChange(uri, null);
+                return db.delete(Contract.Match.TABLE_NAME, selection, selectionArgs);
+
             default:
                 throw new UnsupportedOperationException("Unknown URI:" + uri);
         }
@@ -146,10 +156,11 @@ public class DataProvider extends ContentProvider {
 
         switch (sUriMatcher.match(uri)) {
             case TEAM:
+                getContext().getContentResolver().notifyChange(uri, null);
                 return db.update(Contract.Teams.TABLE_NAME, values, selection + " =? ", selectionArgs);
 
             case MATCH:
-
+                getContext().getContentResolver().notifyChange(uri, null);
                 return db.update(Contract.Match.TABLE_NAME, values, selection + " =? ", selectionArgs);
 
 

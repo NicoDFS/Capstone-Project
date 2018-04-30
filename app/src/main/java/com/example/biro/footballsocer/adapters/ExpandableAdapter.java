@@ -146,8 +146,8 @@ public class ExpandableAdapter extends BaseExpandableListAdapter {
             placeHolder = R.drawable.progress_animation;
         }
 
-        Picasso.with(context).load(gameObj.getHomeTeamPic()).resize(width, height).placeholder(placeHolder).into(holder.homeTeamPic);
-        Picasso.with(context).load(gameObj.getAwayTeamPic()).resize(width, height).placeholder(placeHolder).into(holder.awayTeamPic);
+        Picasso.get().load(gameObj.getHomeTeamPic()).resize(width, height).placeholder(placeHolder).into(holder.homeTeamPic);
+        Picasso.get().load(gameObj.getAwayTeamPic()).resize(width, height).placeholder(placeHolder).into(holder.awayTeamPic);
 
         if (gameObj.getStatus().equals(context.getString(R.string.scheduled))) {
 

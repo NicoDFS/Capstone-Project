@@ -22,11 +22,12 @@ public class Team implements Parcelable {
     private int goalsAg;
     private int league;
 
+    private int games;
+
     public int getGames() {
         return games;
     }
 
-    private int games;
 
     public Team(String image, String country, String name, String stadium, int position, int points, int wins, int loses, int draws, int goals, int goalsAg, int league, int games) {
         this.image = image;

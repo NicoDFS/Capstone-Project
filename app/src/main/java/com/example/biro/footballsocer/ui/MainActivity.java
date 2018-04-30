@@ -1,4 +1,4 @@
-package com.example.biro.footballsocer.ui;
+cpackage com.example.biro.footballsocer.ui;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -50,12 +50,8 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
     private FirebaseAnalytics mFirebaseAnalytics;
 
 
-    public static String getRoundId() {
-        return roundId;
-    }
-
-    private static String roundId;
-    PagerAdapter adapter;
+    private String roundId;
+    private PagerAdapter adapter;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -65,8 +61,6 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-
-
 
 
         setupViewPager(viewPager);
@@ -80,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
 
 
         DividerDrawerItem dividerDrawerItem = new DividerDrawerItem();
-
 
 
         AccountHeader headerResult = new AccountHeaderBuilder()
@@ -105,27 +98,31 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
                         switch (position) {
                             case 0:
                                 roundId = getString(R.string.premierLeague);
+                                SharedPref.getInstance(MainActivity.this).save(Contract.TAG, roundId);
                                 toolbar.setTitle(getString(R.string.drawer_item_1));
                                 viewPager.getAdapter().notifyDataSetChanged();
-                                SharedPref.getInstance(getApplicationContext()).save(Contract.TAG, roundId);
+
                                 break;
                             case 2:
                                 roundId = getString(R.string.bundesliga);
+                                SharedPref.getInstance(MainActivity.this).save(Contract.TAG, roundId);
                                 toolbar.setTitle(getString(R.string.drawer_item_2));
                                 viewPager.getAdapter().notifyDataSetChanged();
-                                SharedPref.getInstance(getApplicationContext()).save(Contract.TAG, roundId);
+
                                 break;
                             case 4:
                                 roundId = getString(R.string.serieA);
+                                SharedPref.getInstance(MainActivity.this).save(Contract.TAG, roundId);
                                 toolbar.setTitle(getString(R.string.drawer_item_3));
                                 viewPager.getAdapter().notifyDataSetChanged();
-                                SharedPref.getInstance(getApplicationContext()).save(Contract.TAG, roundId);
+
                                 break;
                             case 6:
                                 roundId = getString(R.string.ligue1);
+                                SharedPref.getInstance(MainActivity.this).save(Contract.TAG, roundId);
                                 toolbar.setTitle(getString(R.string.drawer_item_4));
                                 viewPager.getAdapter().notifyDataSetChanged();
-                                SharedPref.getInstance(getApplicationContext()).save(Contract.TAG, roundId);
+
                                 break;
                             default:
                                 Log.d("error", "onItemNavi: " + position);
@@ -163,12 +160,13 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
         mFirebaseAnalytics.logEvent("user_activity", params);
 
 
-
     }
 
 
     private void setupViewPager(ViewPager viewPager) {
-         adapter = new PagerAdapter(getSupportFragmentManager());
+
+
+        adapter = new PagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new GameDay(), getString(R.string.GameDayFragment));
         adapter.addFragment(new Standing(), getString(R.string.StandingFragment));
         adapter.addFragment(new Teams(), getString(R.string.TeamFragment));
@@ -177,7 +175,9 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
         viewPager.setAdapter(adapter);
     }
 
-
+    /**
+     * Api Request get teams Data
+     */
     @Override
     public void fetchTeamsData() {
 
@@ -189,8 +189,6 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
         Requests.getInstance(this).getRequest(Contract.baseUrl + Contract.standing + roundId, key, value, new Requests.VolleyCallback() {
             @Override
             public void onSuccess(JSONArray result) throws JSONException {
-
-
 
 
                 int diff = 20;
@@ -206,7 +204,7 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
                     teamObject = result.getJSONObject(i);
 
                     /*
-                    parse json
+                    parse json in old way (:
                      */
                     String name = teamObject.getString(Contract.Teams.name);
                     int teamId = teamObject.getInt(Contract.Teams.teamID);
@@ -235,21 +233,10 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
                     teamCV.put(Contract.Teams.COLUMN_ROUND_ID, roundId);
 
 
-//
-////
                     getContentResolver()
                             .update(Contract.Teams.URI, teamCV, Contract.Teams.COLUMN_TEAM_ID, new String[]{String.valueOf(teamId)});
 
                 }
-//                if (mInterstitialAd.isLoaded())
-//                    mInterstitialAd.show();
-
-////
-//                Log.d("uri", "onSuccess: Insertedtable" + getContentResolver()
-//                        .bulkInsert(
-//                                Contract.Teams.URI,
-//                                teamsCVs.toArray(new ContentValues[teamsCVs.size()])));
-
 
 
             }
@@ -303,6 +290,10 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
 
     }
 
+
+    /**
+     * Api Request get Schedule Data
+     */
     @Override
     public void fetchScheduleData() {
 
@@ -313,8 +304,6 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
             @Override
             public void onSuccess(JSONArray result) throws JSONException {
                 ArrayList<ContentValues> matchesCVs = new ArrayList();
-//                Cursor homeCursor=null;
-//                Cursor awayCursor = null;
 
 
                 for (int i = 0; i < result.length(); i++) {
@@ -331,30 +320,10 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
                     String status = matchObject.getString(Contract.Match.status);
 
 
-//
-//                   homeCursor =getContentResolver().query(Contract.Teams.URI,
-//                            new String[]{Contract.Teams.COLUMN_PIC_URL,Contract.Teams.COLUMN_NAME},
-//                            Contract.Teams.COLUMN_TEAM_ID, new String[]{String.valueOf(homeTeamId)}, null);
-//                    assert homeCursor != null;
-//                    homeCursor.moveToNext();
-//
-//                   awayCursor = getContentResolver().query(Contract.Teams.URI,
-//                            new String[]{Contract.Teams.COLUMN_PIC_URL,Contract.Teams.COLUMN_NAME},
-//                            Contract.Teams.COLUMN_TEAM_ID, new String[]{String.valueOf(awayTeamId)}, null);
-//                    assert awayCursor != null;
-//                    awayCursor.moveToNext();
-//
-//                    String homePic = homeCursor.getString(homeCursor.getColumnIndex(Contract.Teams.COLUMN_PIC_URL));
-//                    String awayPic = awayCursor.getString(awayCursor.getColumnIndex(Contract.Teams.COLUMN_PIC_URL));
-//                    String homeTeam = homeCursor.getString(homeCursor.getColumnIndex(Contract.Teams.COLUMN_NAME));
-//                    String awayTeam = awayCursor.getString(awayCursor.getColumnIndex(Contract.Teams.COLUMN_NAME));
-
-
                     ContentValues matchCV = new ContentValues();
                     matchCV.put(Contract.Match.COLUMN_WEEK, week);
                     matchCV.put(Contract.Match.COLUMN_GAME_ID, gameId);
-//                    matchCV.put(Contract.Match.COLUMN_AWAY_TEAM, awayTeam);
-//                    matchCV.put(Contract.Match.COLUMN_HOME_TEAM, homeTeam);
+
                     matchCV.put(Contract.Match.COLUMN_AWAY_TEAM_GOALS, awayTeamGoals);
                     matchCV.put(Contract.Match.COLUMN_HOME_TEAM_GOALS, homeTeamGoals);
                     matchCV.put(Contract.Match.COLUMN_DATE, date);
@@ -362,25 +331,15 @@ public class MainActivity extends AppCompatActivity implements FetchDataListener
                     matchCV.put(Contract.Match.COLUMN_ROUND_ID, roundId);
                     matchCV.put(Contract.Match.COLUMN_HOME_ID, homeTeamId);
                     matchCV.put(Contract.Match.COLUMN_AWAY_ID, awayTeamId);
-//                    matchCV.put(Contract.Match.COLUMN_HOME_PIC,homePic);
-//                    matchCV.put(Contract.Match.COLUMN_AWAY_PIC,awayPic);
+
 
                     matchesCVs.add(matchCV);
 
-
-                    Log.d("updated", "onSuccess: " + getContentResolver()
-                            .update(Contract.Match.URI, matchCV, Contract.Match.COLUMN_GAME_ID, new String[]{String.valueOf(gameId)}));
-                    ;
+                    getContentResolver()
+                            .update(Contract.Match.URI, matchCV, Contract.Match.COLUMN_GAME_ID, new String[]{String.valueOf(gameId)});
 
 
                 }
-//                homeCursor.close();
-//                awayCursor.close();
-
-//                Log.d("uri", "onSuccess: InsertedtableMatches" + getContentResolver()
-//                        .bulkInsert(
-//                                Contract.Match.URI,
-//                                matchesCVs.toArray(new ContentValues[matchesCVs.size()])));
 
 
             }

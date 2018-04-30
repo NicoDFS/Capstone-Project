@@ -1,10 +1,12 @@
 package com.example.biro.footballsocer.ui;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -20,6 +22,7 @@ import com.example.biro.footballsocer.adapters.ExpandableAdapter;
 import com.example.biro.footballsocer.data.Contract;
 import com.example.biro.footballsocer.models.Game;
 import com.example.biro.footballsocer.R;
+import com.example.biro.footballsocer.utils.SharedPref;
 import com.example.biro.footballsocer.utils.Utils;
 
 import java.text.DateFormat;
@@ -43,16 +46,20 @@ public class GameDay extends Fragment implements SwipeRefreshLayout.OnRefreshLis
     SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.exp)
     ExpandableListView expandableListView;
-    ExpandableAdapter adapter;
-    FetchDataListener fetchDataListener;
-    ArrayList<Game> games;
+    private ExpandableAdapter adapter;
+    private FetchDataListener fetchDataListener;
+    private ArrayList<Game> games;
     HashMap<String, ArrayList<Game>> listDataChild = new HashMap<>();
-    ArrayList<String> listDataHeader;
-    final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    final SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, MMM d, ''yy");
-    final SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
-    final SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm:ss");
-
+    private ArrayList<String> listDataHeader;
+    @SuppressLint("SimpleDateFormat")
+    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    @SuppressLint("SimpleDateFormat")
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, MMM d, ''yy");
+    @SuppressLint("SimpleDateFormat")
+    private final SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
+    @SuppressLint("SimpleDateFormat")
+    private final SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm:ss");
+    private Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,9 +76,8 @@ public class GameDay extends Fragment implements SwipeRefreshLayout.OnRefreshLis
             }
         });
 
-        getLoaderManager().initLoader(1, null, this);
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        String date = df.format(Calendar.getInstance().getTime());
+
+
 
 
 
@@ -79,7 +85,7 @@ public class GameDay extends Fragment implements SwipeRefreshLayout.OnRefreshLis
         return view;
     }
 
-    //
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -88,36 +94,44 @@ public class GameDay extends Fragment implements SwipeRefreshLayout.OnRefreshLis
         } catch (ClassCastException castException) {
             /** The activity does not implement the listener. */
         }
+        this.context = context;
 
 
     }
+
 
     @Override
     public void onStart() {
         super.onStart();
 
-        Handler handler = new Handler();
 
+        Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
                 onRefresh();
             }
         }, 2000);
+
+
     }
+
+
+    @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new CursorLoader(getActivity(),
+        return new CursorLoader(context,
                 Contract.Match.URI,
                 Contract.Match.MATCH_COLUMNS,
-                Contract.Match.COLUMN_ROUND_ID, new String[]{MainActivity.getRoundId()}, Contract.Match.COLUMN_WEEK);
+                Contract.Match.COLUMN_ROUND_ID, new String[]{SharedPref.getInstance(context).load(Contract.TAG)}, Contract.Match.COLUMN_WEEK);
     }
+
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         try {
 
             prepareData(data);
-            adapter = new ExpandableAdapter(getContext(), listDataHeader, listDataChild);
+            adapter = new ExpandableAdapter(context, listDataHeader, listDataChild);
             expandableListView.setAdapter(adapter);
             swipeRefreshLayout.setRefreshing(false);
 
@@ -135,23 +149,30 @@ public class GameDay extends Fragment implements SwipeRefreshLayout.OnRefreshLis
     @Override
     public void onRefresh() {
 
-
-        if (Utils.getInstance(getContext()).networkUp()) {
+        swipeRefreshLayout.setRefreshing(true);
+        if (Utils.getInstance(context).networkUp()) {
             fetchDataListener.fetchScheduleData();
-            GameWidget.sendRefreshBroadcast(getActivity());
+            GameWidget.sendRefreshBroadcast(context);
+            getLoaderManager().restartLoader(2, null, this);
 
         } else {
-            Toast.makeText(getContext(), R.string.connectionError, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, R.string.connectionError, Toast.LENGTH_LONG).show();
             swipeRefreshLayout.setRefreshing(false);
         }
-        getLoaderManager().restartLoader(1, null, this);
+
     }
-//
+
+    /**
+     * Provide Data For Expandle List Adapter
+     * @param cursor
+     * @throws ParseException
+     */
+
     void prepareData(Cursor cursor) throws ParseException {
 
         int diff;
         int count = 0;
-        int roundId = Integer.valueOf(MainActivity.getRoundId());
+        int roundId = Integer.valueOf(SharedPref.getInstance(context).load(Contract.TAG));
         listDataHeader = new ArrayList<String>();
         if (roundId == Integer.valueOf(getString(R.string.bundesliga))) {
             diff = 34;
@@ -169,7 +190,6 @@ public class GameDay extends Fragment implements SwipeRefreshLayout.OnRefreshLis
         }
 
         cursor.moveToFirst();
-
 
 
         for (int i = 1; i <= diff; i++) {

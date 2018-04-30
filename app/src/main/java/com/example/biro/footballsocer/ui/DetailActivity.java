@@ -58,9 +58,11 @@ public class DetailActivity extends AppCompatActivity {
 
         Team team = getIntent().getParcelableExtra(getString(R.string.teamkey));
 
+        clubLoses.setText(team.getLoses());
 
         if (team != null) {
-            Picasso.with(this).load(team.getImage()).resize(500,500).placeholder(R.drawable.progress_animation).into(clubImage);
+            Picasso.get()
+                    .load(team.getImage()).resize(500,500).placeholder(R.drawable.progress_animation).into(clubImage);
             clubName.setText(team.getName());
             clubCountry.setText(team.getCountry());
             int roundId = team.getLeague();
@@ -72,42 +74,41 @@ public class DetailActivity extends AppCompatActivity {
                 clubLeague.setText(getString(R.string.drawer_item_3));
             else
                 clubLeague.setText(getString(R.string.drawer_item_4));
-            clubMatches.setText(team.getGames()+"");
-            clubPoints.setText(team.getPoints()+"");
-            clubPosition.setText(team.getPosition()+"");
-            clubStadium.setText(team.getStadium());
-            clubWins.setText(team.getWins()+"");
-            clubLoses.setText(team.getLoses()+"");
-            clubDraws.setText(team.getDraws()+"");
-            clubGoals.setText(team.getGoals()+"");
-            clubGoalsAg.setText(team.getGoalsAg()+"");
-        } else
-            Toast.makeText(this, "null", Toast.LENGTH_LONG).show();
+            clubMatches.setText(String.valueOf(team.getGames()));
+            clubPoints.setText(String.valueOf(team.getPoints()));
+            clubPosition.setText(String.valueOf(team.getPosition()));
+            clubStadium.setText(String.valueOf(team.getStadium()));
+            clubWins.setText(String.valueOf(team.getWins()));
+            clubLoses.setText(String.valueOf(team.getLoses()));
+            clubDraws.setText(String.valueOf(team.getDraws()));
+            clubGoals.setText(String.valueOf(team.getGoals()));
+            clubGoalsAg.setText(String.valueOf(team.getGoalsAg()));
+        }
 
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .build();
-        mAdView.loadAd(adRequest);
-
-
-        final InterstitialAd mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(getString(R.string.ad_mob_interstitialAd));
-        mInterstitialAd.loadAd(adRequest);
-
-        mInterstitialAd.setAdListener(new AdListener()
-        {
-            @Override
-            public void onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-                mInterstitialAd.show();
-            }
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                // Code to be executed when an ad request fails.
-                Log.d("Ads", "onAdFailedToLoad");
-            }
-
-        });
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+//                .build();
+//        mAdView.loadAd(adRequest);
+//
+//
+//        final InterstitialAd mInterstitialAd = new InterstitialAd(this);
+//        mInterstitialAd.setAdUnitId(getString(R.string.ad_mob_interstitialAd));
+//        mInterstitialAd.loadAd(adRequest);
+//
+//        mInterstitialAd.setAdListener(new AdListener()
+//        {
+//            @Override
+//            public void onAdLoaded() {
+//                // Code to be executed when an ad finishes loading.
+//                mInterstitialAd.show();
+//            }
+//            @Override
+//            public void onAdFailedToLoad(int errorCode) {
+//                // Code to be executed when an ad request fails.
+//                Log.d("Ads", "onAdFailedToLoad");
+//            }
+//
+//        });
 
     }
 }
